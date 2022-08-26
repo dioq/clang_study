@@ -21,11 +21,13 @@ chmod +x /usr/bin/debugserver
 # 使用 debugserver
 ## 1. 手机上启动 debugserver,有两种方式
 ### 1.1 启动可执行 Mach-O文件,并附加
-debugserver -x backboard <IP>:<PORT> /path/to/executable
+debugserver -x backboard host:port /path/to/executable
 如:
 debugserver -x backboard 127.0.0.1:8090 /var/containers/Bundle/Application/24A5D963-2D45-4BA8-BD01-3532C4AD9AAD/TargetForInjectDyld.app/TargetForInjectDyld
 ### 1.2 附加到目标进程
-debugserver <IP>:<PORT> [<processName> or <pid>]
+debugserver host:port --attach=<process_name>
+或
+debugserver host:port -a <pid>
 如:
 debugserver 127.0.0.1:8090 -a 12316
 ## 2. 电脑上启动 lldb 连接 debugserver
@@ -36,7 +38,6 @@ iproxy 8090 8090
 ### 2.2 进入 lldb 页面
 lldb
 ### 2.3 连接 debugserver
-process connect connect://<IP>:<PORT>
+process connect connect://<host>:<port>
 如:
 process connect connect://127.0.0.1:8090
-
