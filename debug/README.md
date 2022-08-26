@@ -27,7 +27,7 @@ debugserver -x backboard 127.0.0.1:8090 /var/containers/Bundle/Application/24A5D
 ### 1.2 附加到目标进程
 debugserver host:port --attach=<process_name>
 或
-debugserver host:port -a <pid>
+debugserver host:port -a [<pid> or <process_name>]
 如:
 debugserver 127.0.0.1:8090 -a 12316
 ## 2. 电脑上启动 lldb 连接 debugserver
